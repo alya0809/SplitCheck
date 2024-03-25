@@ -18,14 +18,14 @@
   </v-app-bar>
 
   <v-container class="text-center" style="margin-top: 64px;">
-    <div style= "margin-top: 20px">
+    <div style="margin-top: 20px">
       <h1>Делить - это просто!</h1>
     </div>
     <div style="width: 35%; margin: 0 auto;">
       <p>Хорошо провели время в компании, попробовали вкусные блюда вместе и не хотите проводить время с калькулятором? 
       Мы поможем вам быстро и просто рассчитать, на какую сумму поел каждый из вас!</p>
     </div>
-    <v-col cols="12" md="4" sm="4" class ="center-button">
+    <v-col cols="12" md="4" sm="4" class="center-button">
       <v-btn rounded="xs" size="x-large" block color="rgb(186, 104, 200)">ПОПРОБОВАТЬ</v-btn>
     </v-col>
   </v-container>
@@ -136,6 +136,7 @@
         { src: 'https://admin.redmuseum.church/wp-content/uploads/2020/06/1-61.jpg',}, 
         { src: 'https://takiedela.ru/wp-content/uploads/2024/03/4c338cf556d683b10e92791c86e7cb97.jpg'}
       ],
+      dialog: false,
     }),
     methods: {
     scrollTo(elementId) {
