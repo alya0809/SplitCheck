@@ -1,21 +1,13 @@
 <template>
     <div class="guest">
       <div>
-        <div>{{ guest.id }}</div>
         <div><strong>Имя:</strong> {{ guest.name }}</div>
       </div>
-      <div class="guest__btns">
-        <my-button
-          @click="$router.push(`/guests/$guest.id}`)"
-        >
-          Открыть
-        </my-button>
-       <my-button
-         @click="$emit('remove', guest)"
-       >
+      <v-btn color="rgb(186, 104, 200)"
+      @click="$emit('remove', guest)"
+      >
          Удалить
-       </my-button>
-      </div>
+       </v-btn>
     </div>
   </template>
   
@@ -33,13 +25,18 @@
   <style scoped>
   .guest {
     padding: 15px;
-    border: 2px solid teal;
-    margin-top: 15px;
+    border: 4px solid rgb(186, 104, 200);
+    border-radius: 10px;
+    margin: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
   .guest__btns {
     display: flex;
+  }
+  v-btn {
+    align-self:flex-end; 
+    padding:10px 15px
   }
   </style>
