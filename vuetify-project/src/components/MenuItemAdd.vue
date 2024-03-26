@@ -2,35 +2,50 @@
   <div class="pa-4 text-center">
     <v-dialog v-model="dialog" max-width="600">
       <template v-slot:activator="{ props: activatorProps }">
-        <v-btn
-          class="text-none font-weight-regular"
-          prepend-icon="mdi-food"
-          text="Добавить позицию меню"
-          variant="tonal"
-          v-bind="activatorProps"
-        ></v-btn>
+        <v-col cols="auto">
+          <v-btn density="default"
+            color="rgb(186, 104, 200)"
+            prepend-icon="mdi-food"
+            text="Добавить позицию меню"
+            v-bind="activatorProps"
+          ></v-btn>
+        </v-col>
       </template>
 
-      <v-card prepend-icon="mdi-food" title="Menu Item">
+      <v-card class="purple-border" outlined prepend-icon="mdi-food" title="Добавить позицию">
         <v-card-text>
           <v-row dense>
-            <v-col cols="12" md="4" sm="6">
+            <v-col cols="12" md="8" sm="6">
               <v-text-field
+                v-model="menuItem.name"
                 label="Название блюда/напитка*"
+                :class="{ 'error': !menuItem.name }"
                 required
               ></v-text-field>
             </v-col>
             <v-col cols="12" md="4" sm="6">
-              <v-text-field label="Цена*" required></v-text-field>
+              <v-text-field 
+                v-model="menuItem.price" 
+                label="Цена*" 
+                required
+                :class="{ 'error': !menuItem.price }"
+                ></v-text-field>
             </v-col>
-            <!-- <v-col cols="12" sm="6">
-              <v-autocomplete
+            <v-row>
+            <v-col>
+              <v-select
+                v-model="menuItem.orderedBy"
                 :items="guests.map(guest => guest.name)"
-                label="Кто заказывал"
-                auto-select-first
+                label="Кто заказал*"
                 multiple
-              ></v-autocomplete>
-            </v-col> -->
+                chips
+                no-data-text="Список пуст. Добавьте гостей"
+                required
+                :class="{ 'error': !menuItem.orderedBy || menuItem.orderedBy.length === 0 }"
+              ></v-select>
+            </v-col>
+          </v-row>
+
           </v-row>
 
           <small class="text-caption text-medium-emphasis"
@@ -45,15 +60,16 @@
 
           <v-btn
             text="Закрыть"
-            variant="plain"
+            color="rgb(186, 104, 200)"
+            variant="tonal"
             @click="dialog = false"
           ></v-btn>
 
           <v-btn
-            color="primary"
+            color="rgb(186, 104, 200)"
             text="Добавить"
-            variant="tonal"
-            @click="dialog = false"
+            variant="flat"
+            @click="addMenuItem"
           ></v-btn>
         </v-card-actions>
       </v-card>
@@ -76,18 +92,31 @@
           price: 0,
           orderedBy: []
         },
-        dialog: false
+        dialog: false,
       }
     },
     methods: {
       addMenuItem() {
+        if (!this.menuItem.name || !this.menuItem.price || !this.menuItem.orderedBy || this.menuItem.orderedBy.length === 0) {
+          this.shakeForm();
+          return;
+        }
+
         this.menuItem.id = Date.now();
-        this.$emit('create', this.menuItem)
+        this.$emit('createMenu', this.menuItem);
         this.menuItem = {
           name: '',
           price: 0,
           orderedBy: []
-        }
+        };
+        this.dialog = false;
+      },
+      shakeForm() {
+        const form = document.querySelector('.purple-border');
+        form.classList.add('shake');
+        setTimeout(() => {
+          form.classList.remove('shake');
+        }, 500);
       }
     }
 }
@@ -98,4 +127,27 @@
         display: flex;
         flex-direction: column;
     }
+    .purple-border {
+    border: 4px solid rgb(186, 104, 200);
+    border-radius: 16px; /* Добавим скругленные углы */
+    padding: 10px;
+    &.shake {
+    animation: shake 0.5s;
+  }
+
+  @keyframes shake {
+    10%, 90% {
+      transform: translateX(-5px);
+    }
+    20%, 80% {
+      transform: translateX(5px);
+    }
+    30%, 50%, 70% {
+      transform: translateX(-3px);
+    }
+    40%, 60% {
+      transform: translateX(3px);
+    }
+  }
+}
 </style>

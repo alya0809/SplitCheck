@@ -1,23 +1,20 @@
 <template>
     <div class="menuItem">
       <div>
-        <div>{{ menuItem.id }}</div>
-        <div><strong>Имя:</strong> {{ menuItem.name }}</div>
+        <div><strong>Название:</strong> {{ menuItem.name }}</div>
         <div><strong>Цена:</strong> {{ menuItem.price}}</div>
-        <div><strong>Кто заказал:</strong> {{ menuItem.orderedBy }}</div>
+        <div><strong>Кто заказал: </strong> 
+          <span v-for="(guest, index) in menuItem.orderedBy" :key="index">
+            <template v-if="index !== 0">,</template>
+            {{ guest }}
+          </span>
+        </div>
       </div>
-      <div class="menuItem__btns">
-        <my-button
-          @click="$router.push(`/menuItems/$menuItem.id}`)"
+      <v-btn color="rgb(186, 104, 200)"
+        @click="$emit('removeMenu', menuItem)"
         >
-          Открыть
-        </my-button>
-       <my-button
-         @click="$emit('remove', menuItem)"
-       >
          Удалить
-       </my-button>
-      </div>
+      </v-btn>
     </div>
   </template>
   
@@ -35,7 +32,8 @@
   <style scoped>
   .menuItem {
     padding: 15px;
-    border: 2px solid teal;
+    border: 4px solid rgb(186, 104, 200);
+    border-radius: 10px;
     margin-top: 15px;
     display: flex;
     align-items: center;

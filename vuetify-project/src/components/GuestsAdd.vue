@@ -2,22 +2,27 @@
   <div class="pa-4 text-center">
     <v-dialog v-model="dialogGuest" max-width="600">
       <template v-slot:activator="{ props: activatorProps }">
-        <v-btn
-          class="text-none font-weight-regular"
-          prepend-icon="mdi-account"
-          text="Добавить гостя"
-          variant="tonal"
-          v-bind="activatorProps"
-        ></v-btn>
+        <v-col cols="auto">
+          <v-btn 
+            color="rgb(186, 104, 200)"
+            prepend-icon="mdi-account"
+            text="Добавить гостя"
+            density="default"
+            v-bind="activatorProps"
+          ></v-btn>
+        </v-col>
       </template>
 
-      <v-card prepend-icon="mdi-account" title="Добавить гостя">
+      <v-card class="purple-border" outlined prepend-icon="mdi-account" title="Добавить гостя">
         <v-card-text>
           <v-row dense>
-            <v-col cols="12" md="4" sm="6">
+            <v-col color="rgb(232, 206, 237)">
               <v-text-field 
               v-model="guest.name"
-              label="Имя*" required></v-text-field>
+              label="Имя*" 
+              required
+              :class="{ 'error': !guest.name }"
+              ></v-text-field>
             </v-col>
           </v-row>
 
@@ -31,12 +36,16 @@
         <v-card-actions>
           <v-spacer></v-spacer>
 
-          <v-btn text="Закрыть" variant="plain" @click="dialogGuest = false"></v-btn>
+          <v-btn text="Закрыть"
+            color="rgb(186, 104, 200)" 
+            variant="tonal" 
+            @click="dialogGuest = false"
+          ></v-btn>
 
           <v-btn
-            color="primary"
+            color="rgb(186, 104, 200)"
             text="Добавить"
-            variant="tonal"
+            variant="flat"
             @click="addGuests"
           ></v-btn>
         </v-card-actions>
@@ -57,13 +66,24 @@
     },
     methods: {
       addGuests() {
+        if (!this.guest.name) {
+          this.shakeForm();
+          return;
+        }
         this.guest.id = Date.now();
         this.$emit('create', this.guest)
         this.guest = {
           name: ''
         }
+      },
+      shakeForm() {
+        const form = document.querySelector('.purple-border');
+        form.classList.add('shake');
+        setTimeout(() => {
+          form.classList.remove('shake');
+        }, 500);
       }
-    },
+    }
   }
   </script>
   
@@ -72,4 +92,27 @@
         display: flex;
         flex-direction: column;
     }
+    .purple-border {
+    border: 4px solid rgb(186, 104, 200);
+    border-radius: 16px; /* Добавим скругленные углы */
+    padding: 10px;
+    &.shake {
+    animation: shake 0.5s;
+  }
+
+    @keyframes shake {
+      10%, 90% {
+        transform: translateX(-5px);
+      }
+      20%, 80% {
+        transform: translateX(5px);
+      }
+      30%, 50%, 70% {
+        transform: translateX(-3px);
+      }
+      40%, 60% {
+        transform: translateX(3px);
+      }
+    }
+  }
 </style>

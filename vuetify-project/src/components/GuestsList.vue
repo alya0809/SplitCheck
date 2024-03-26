@@ -10,11 +10,11 @@
         />
       </transition-group>
     </div>
-    <h2 v-else style="color: red">
+    <h2 v-else style="color: rgb(186, 104, 200)">
       Список гостей пуст
     </h2>
   </template>
-  
+
   <script>
   import GuestsItem from "@/components/GuestsItem";
   export default {
@@ -28,21 +28,4 @@
   }
   </script>
   
-  <style scoped>
-  .user-list-item {
-    display: inline-block;
-    margin-right: 10px;
-  }
-  .user-list-enter-active,
-  .user-list-leave-active {
-    transition: all 0.4s ease;
-  }
-  .user-list-enter-from,
-  .user-list-leave-to {
-    opacity: 0;
-    transform: translateX(130px);
-  }
-  .user-list-move {
-    transition: transform 0.4s ease;
-  }
-  </style>
+  
