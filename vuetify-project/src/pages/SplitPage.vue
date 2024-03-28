@@ -29,6 +29,7 @@ import MenuItemAdd from '@/components/MenuItemAdd.vue';
 import GuestsList from '@/components/GuestsList.vue';
 import MenuItemList from '@/components/MenuItemList.vue';
 import CalculatePrice from '@/components/CalculatePrice.vue';
+import {mapState, mapMutations} from 'vuex';
   export default {
     components: {
         GuestsAdd,
@@ -37,29 +38,34 @@ import CalculatePrice from '@/components/CalculatePrice.vue';
         MenuItemList,
         CalculatePrice
     },
-    data() {
-        return {
-            guests: [
-              // {}
-            ],
-            menuItems: [
-              // {}
-            ]
-        }
-    },
     methods: {
-        addGuests(guest) {
-          this.guests.push(guest);
+      ...mapMutations({
+          setGuest: 'guest/setGuest',
+          setMenuItem: 'guest/setMenuItem',
+          setAddGuests: 'guest/setAddGuests',
+          setRemoveGuests: 'guest/setRemoveGuests',
+          setAddMenuItem: 'guest/setAddMenuItem',
+          setRemoveMenuItems: 'guest/setRemoveMenuItems'
+        }),
+        addGuests(newGuest) {
+          this.$store.commit('guest/setAddGuests', newGuest);
         },
-        removeGuests(guest) {
-            this.guests = this.guests.filter(p => p.id != guest.id)
+        addMenuItem(newItem) {
+          this.$store.commit('guest/setAddMenuItem', newItem);
         },
-        addMenuItem(menuItem) {
-          this.menuItems.push(menuItem);
+        removeGuests(index) {
+          this.$store.commit('guest/setRemoveGuests', index);
         },
-        removeMenuItems(menuItem) {
-            this.menuItems = this.menuItems.filter(p => p.id != menuItem.id)
-        }
+        removeMenuItems(index) {
+          this.$store.commit('guest/setRemoveMenuItems', index);
+            
+        },
+      },
+    computed: {
+      ...mapState({
+        guests: state => state.guest.guests,
+        menuItems: state => state.guest.menuItems
+        })
     }
   }
 </script>

@@ -9,6 +9,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import MainPage from '@/pages/mainPage.vue'
 import SplitPage from '@/pages/SplitPage.vue'
+import aboutPage from '@/pages/aboutPage.vue'
+import examplePage from '@/pages/examplePage.vue'
 
 const routes = [
   {
@@ -20,6 +22,16 @@ const routes = [
     path: '/split',
     name: SplitPage,
     component: SplitPage
+  },
+  {
+    path: '/about',
+    name: aboutPage,
+    component: aboutPage
+  },
+  {
+    path: '/example',
+    name: examplePage,
+    component: examplePage
   }
   
 ]
