@@ -1,4 +1,4 @@
-export const guestModule = {
+export const mainModule = {
     state: () => ({
         guests: [],
         menuItems: []

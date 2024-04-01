@@ -39,7 +39,7 @@
           <v-btn text="Закрыть"
             color="rgb(186, 104, 200)" 
             variant="tonal" 
-            @click="dialogGuest = false"
+            @click="closeDialogGuest"
           ></v-btn>
 
           <v-btn
@@ -54,6 +54,7 @@
 </template>
   
   <script>
+  import {shakeForm} from "@/components/shakeForm.js"
   export default {
     data() {
       return {
@@ -64,9 +65,9 @@
       }
     },
     methods: {
-      addGuests() {
+      addGuests() { //function for adding a guest
         if (!this.guest.name) {
-          this.shakeForm();
+          shakeForm();
           return;
         }
         this.guest.id = Date.now();
@@ -75,43 +76,15 @@
           name: ''
         }
       },
-      shakeForm() {
-        const form = document.querySelector('.purple-border');
-        form.classList.add('shake');
-        setTimeout(() => {
-          form.classList.remove('shake');
-        }, 500);
+      closeDialogGuest() { //function to close the dialog
+          if (this.guest.name > 0) {
+              this.guest = {
+                  name: '',
+              };
+          }
+          this.dialogGuest = false;
       }
     }
   }
   </script>
   
-<style lang="scss" scoped>
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-    .purple-border {
-    border: 4px solid rgb(186, 104, 200);
-    border-radius: 16px; /* Добавим скругленные углы */
-    padding: 10px;
-    &.shake {
-    animation: shake 0.5s;
-  }
-
-    @keyframes shake {
-      10%, 90% {
-        transform: translateX(-5px);
-      }
-      20%, 80% {
-        transform: translateX(5px);
-      }
-      30%, 50%, 70% {
-        transform: translateX(-3px);
-      }
-      40%, 60% {
-        transform: translateX(3px);
-      }
-    }
-  }
-</style>

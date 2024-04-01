@@ -1,5 +1,5 @@
 <template>
-    <div class="guest">
+    <div class="item">
       <div>
         <div><strong>Имя:</strong> {{ guest.name }}</div>
       </div>
@@ -11,7 +11,8 @@
     </div>
   </template>
   
-  <script>
+  
+  <script> //a component of a single guest value
   export default {
     props: {
         guest: {
@@ -21,22 +22,3 @@
     }
   }
   </script>
-  
-  <style scoped>
-  .guest {
-    padding: 15px;
-    border: 4px solid rgb(186, 104, 200);
-    border-radius: 10px;
-    margin: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .guest__btns {
-    display: flex;
-  }
-  v-btn {
-    align-self:flex-end; 
-    padding:10px 15px
-  }
-  </style>

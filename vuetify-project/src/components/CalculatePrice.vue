@@ -1,13 +1,15 @@
+//calculation and output of the total cost
 <template>
-    <div>
+    <div class="pa-4 text-center">
         <v-dialog v-model="dialogCost" max-width="600">
             <template v-slot:activator="{ props: activatorProps }">
-            <v-col cols="auto">
-                <v-btn class="btn"
-                prepend-icon="mdi-cash-check"
-                text="Расчет стоимости"
-                density="default"
-                v-bind="activatorProps"
+                <v-col cols="auto">
+                    <v-btn 
+                    class="btn"
+                    prepend-icon="mdi-cash-check"
+                    text="Расчет стоимости"
+                    density="default"
+                    v-bind="activatorProps"
                 ></v-btn>
             </v-col>
             </template>
@@ -28,7 +30,7 @@
                 color="rgb(186, 104, 200)"
                 text="Закрыть"
                 variant="tonal" 
-                @click="dialogCost = false"
+                @click="closeDialogCost"
                 ></v-btn>
     
                 <v-btn
@@ -44,6 +46,7 @@
 </template>
   
 <script>
+  import {shakeForm} from "@/components/shakeForm.js"
   export default {
     props: {
         menuItems: {
@@ -62,33 +65,43 @@
         };
     },
     methods: {
-        calculateCost() {
-            let costPerGuest = {};
-            this.menuItems.forEach(menuItem => {
-                const pricePerPerson = (menuItem.price / menuItem.orderedBy.length);
-                menuItem.orderedBy.forEach(guest => {
-                    if (costPerGuest[guest]) {
-                        costPerGuest[guest] += pricePerPerson;
-                    } else {
-                        costPerGuest[guest] = pricePerPerson;
-                    }
-                    costPerGuest[guest] = Number(costPerGuest[guest].toFixed(2));
+        calculateCost() { //function for calculating the total cost
+            if (this.menuItems.length === 0 || this.guests.length === 0) {
+                const calculateButton = document.querySelector('.btn');
+                shakeForm();
+
+                setTimeout(() => {
+                    calculateButton.classList.remove('shake-animation');
+                }, 1000);
+
+                alert('Пожалуйста, добавьте хотя бы одного гостя/позицию в меню!');
+            } else {
+                let costPerGuest = {};
+                this.menuItems.forEach(menuItem => {
+                    const pricePerPerson = (menuItem.price / menuItem.orderedBy.length);
+                    menuItem.orderedBy.forEach(guest => {
+                        if (costPerGuest[guest]) {
+                            costPerGuest[guest] += pricePerPerson;
+                        } else {
+                            costPerGuest[guest] = pricePerPerson;
+                        }
+                        costPerGuest[guest] = Number(costPerGuest[guest].toFixed(2));
+                    });
                 });
-            });
-            this.costPerGuest = costPerGuest;
+                this.costPerGuest = costPerGuest;
+            }
+        },
+        closeDialogCost() { //function to close the dialog
+            if (Object.keys(this.costPerGuest).length === 0) {
+                this.dialogCost = false;
+            } else {
+                if (confirm('Вы уверены, что хотите закрыть окно? Расчет стоимости будет потерян.')) {
+                    this.costPerGuest = {};
+                    this.dialogCost = false;
+                }
+            }
         }
+
     }
 };
 </script>
-<style>
-    .bordered-list li{
-        padding: 15px;
-        border: 4px solid rgb(186, 104, 200);
-        border-radius: 10px;
-        margin: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    
-</style>

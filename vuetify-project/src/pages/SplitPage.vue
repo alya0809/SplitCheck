@@ -1,32 +1,44 @@
 <template>
-  <h1>Расчет стоимости</h1>
-  <v-container>
-    <guests-add 
-    @create="addGuests"/>
-    <menu-item-add
-    :guests="guests"
-    @createMenu="addMenuItem"/>
+  <v-container class="split">
+    <h1>Расчет стоимости</h1>
+    <v-container>
+      <v-row>
+        <v-col cols="4">
+          <guests-add 
+          @create="addGuests"/>
+        </v-col>
+        <v-col cols="4">
+          <menu-item-add
+          :guests="guests"
+          @createMenu="addMenuItem"/>
+        </v-col>
+        <v-col cols="4">
+          <calculate-price
+            :guests="guests"
+            :menuItems="menuItems"
+          />
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-container class="border-content">
+      <v-row class="justify-center align-center">
+        <v-col cols="5" class="mb-4">
+          <guests-list 
+            :guests="guests" 
+            @remove="removeGuests"
+          />
+        </v-col>
+        <v-col cols="4" class="mb-4">
+          <menu-item-list 
+            :menuItems="menuItems" 
+            @removeMenu="removeMenuItems"
+          />
+        </v-col>
+      </v-row>
+    </v-container>
+    
   </v-container>
-  <v-container>
-    <v-row>
-      <v-col cols="6">
-        <guests-list 
-          :guests="guests" 
-          @remove="removeGuests"
-        />
-      </v-col>
-      <v-col cols="6">
-        <menu-item-list 
-          :menuItems="menuItems" 
-          @removeMenu="removeMenuItems"
-        />
-      </v-col>
-    </v-row>
-  </v-container>
-  <calculate-price
-    :guests="guests"
-    :menuItems="menuItems"
-  />
+  
 </template>
   
 <script>
@@ -46,31 +58,31 @@ import {mapState, mapMutations} from 'vuex';
     },
     methods: {
       ...mapMutations({
-          setGuest: 'guest/setGuest',
-          setMenuItem: 'guest/setMenuItem',
-          setAddGuests: 'guest/setAddGuests',
-          setRemoveGuests: 'guest/setRemoveGuests',
-          setAddMenuItem: 'guest/setAddMenuItem',
-          setRemoveMenuItems: 'guest/setRemoveMenuItems'
+          setGuest: 'main/setGuest',
+          setMenuItem: 'main/setMenuItem',
+          setAddGuests: 'main/setAddGuests',
+          setRemoveGuests: 'main/setRemoveGuests',
+          setAddMenuItem: 'main/setAddMenuItem',
+          setRemoveMenuItems: 'main/setRemoveMenuItems'
         }),
         addGuests(newGuest) {
-          this.$store.commit('guest/setAddGuests', newGuest);
+          this.$store.commit('main/setAddGuests', newGuest);
         },
         addMenuItem(newItem) {
-          this.$store.commit('guest/setAddMenuItem', newItem);
+          this.$store.commit('main/setAddMenuItem', newItem);
         },
         removeGuests(index) {
-          this.$store.commit('guest/setRemoveGuests', index);
+          this.$store.commit('main/setRemoveGuests', index);
         },
         removeMenuItems(index) {
-          this.$store.commit('guest/setRemoveMenuItems', index);
+          this.$store.commit('main/setRemoveMenuItems', index);
             
         },
       },
     computed: {
       ...mapState({
-        guests: state => state.guest.guests,
-        menuItems: state => state.guest.menuItems
+        guests: state => state.main.guests,
+        menuItems: state => state.main.menuItems
         })
     }
   }

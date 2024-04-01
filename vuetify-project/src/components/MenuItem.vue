@@ -1,5 +1,5 @@
 <template>
-    <div class="menuItem">
+    <div class="item">
       <div>
         <div><strong>Название:</strong> {{ menuItem.name }}</div>
         <div><strong>Цена:</strong> {{ menuItem.price}}</div>
@@ -29,17 +29,3 @@
   }
   </script>
   
-  <style scoped>
-  .menuItem {
-    padding: 15px;
-    border: 4px solid rgb(186, 104, 200);
-    border-radius: 10px;
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .menuItem__btns {
-    display: flex;
-  }
-  </style>

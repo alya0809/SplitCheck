@@ -6,7 +6,7 @@
           <img src="./components/logo/main.png" alt="Логотип" class="logo">
         </v-toolbar-title>
       </template>
-      <v-app-bar-title><router-link to="/" class="router">Сплитчек</router-link></v-app-bar-title>
+      <v-app-bar-title><router-link to="/" class="router">СплитЧек</router-link></v-app-bar-title>
     
       <v-btn><router-link to="/split" class="router">Использовать</router-link></v-btn>
       <v-btn><router-link to="/about" class="router">О продукте</router-link></v-btn>

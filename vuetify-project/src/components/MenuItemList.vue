@@ -1,7 +1,7 @@
 <template>
     <div v-if="menuItems.length > 0">
       <h3>Список позиций</h3>
-      <transition-group name="menuItem-list">
+      <transition-group name="user-list">
         <menu-item
           v-for="menuItem in menuItems"
           :menuItem="menuItem"
