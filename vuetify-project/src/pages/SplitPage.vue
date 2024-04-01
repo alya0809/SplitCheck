@@ -8,14 +8,20 @@
     @createMenu="addMenuItem"/>
   </v-container>
   <v-container>
-    <guests-list 
-    :guests="guests"
-    @remove="removeGuests"/>
-  </v-container>
-  <v-container>
-    <menu-item-list
-    :menuItems="menuItems"
-    @removeMenu="removeMenuItems"/>
+    <v-row>
+      <v-col cols="6">
+        <guests-list 
+          :guests="guests" 
+          @remove="removeGuests"
+        />
+      </v-col>
+      <v-col cols="6">
+        <menu-item-list 
+          :menuItems="menuItems" 
+          @removeMenu="removeMenuItems"
+        />
+      </v-col>
+    </v-row>
   </v-container>
   <calculate-price
     :guests="guests"

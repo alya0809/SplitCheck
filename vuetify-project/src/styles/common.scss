@@ -1,0 +1,73 @@
+$font-stack: Roboto, Museo Slab, Calluna, Droid Sans, Helvetica, FF Meta Serif;
+$base-color: rgb(186, 104, 200);
+
+@mixin text($size) {
+    font-size: $size;
+    font-family: $font-stack;
+  }
+
+.btn {
+    background-color: $base-color;
+    color: aliceblue;
+    font-family: $font-stack;
+}
+
+.content {
+    margin-top: 64px;
+}
+
+.block {
+    margin-top: 20px;
+    max-width: 90%;
+}
+
+.text {
+    @include text($size: 25px)
+}
+
+.main-div {
+    display: flex; 
+    align-items: flex-start; 
+    flex-wrap: wrap; 
+    flex-direction: column;
+}
+
+.subject-div {
+    display: flex; 
+    align-items: center; 
+    margin: 20px 0px;
+    div {
+        width: 50px; 
+        height: 50px; 
+        margin-right: 10px;
+    }
+    p {
+        flex: 1; 
+        margin-left: 10px;
+        @include text($size: 22px)
+    }
+}
+
+.img-alone {
+    max-width: 65%; 
+    margin-left: 15%;
+}
+
+.carousel {
+    max-width: 800px; 
+    margin: 20px auto;
+}
+
+.relative {
+    position: relative;
+}
+.router {
+    text-decoration: none; 
+    color: inherit;
+}
+.logo {
+    height: 40px;
+}
+.text-h2 {
+    @include text($size: 25px)
+}

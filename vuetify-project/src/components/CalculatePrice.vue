@@ -1,14 +1,45 @@
 <template>
     <div>
-        <h1>Распределение стоимости</h1>
-        <v-btn @click="calculateCost" color="rgb(186, 104, 200)">Рассчитать стоимость</v-btn>
-        <div v-if="Object.keys(costPerGuest).length > 0">
-            <ul class="bordered-list">
-                <li v-for="(cost, guest) in costPerGuest" :key="guest">
-                    {{ guest }} - {{ cost }} руб.
-                </li>
-            </ul>
-        </div>
+        <v-dialog v-model="dialogCost" max-width="600">
+            <template v-slot:activator="{ props: activatorProps }">
+            <v-col cols="auto">
+                <v-btn class="btn"
+                prepend-icon="mdi-cash-check"
+                text="Расчет стоимости"
+                density="default"
+                v-bind="activatorProps"
+                ></v-btn>
+            </v-col>
+            </template>
+    
+            <v-card class="purple-border" outlined prepend-icon="mdi-cash-check" title="Расчет стоимости">
+                <div v-if="Object.keys(costPerGuest).length > 0">
+                    <ul class="bordered-list">
+                        <li v-for="(cost, guest) in costPerGuest" :key="guest">
+                            {{ guest }} - {{ cost }}
+                        </li>
+                    </ul>
+                </div>
+    
+            <v-divider></v-divider>
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn 
+                color="rgb(186, 104, 200)"
+                text="Закрыть"
+                variant="tonal" 
+                @click="dialogCost = false"
+                ></v-btn>
+    
+                <v-btn
+                class="btn"
+                text="Рассчитать"
+                variant="flat"
+                @click="calculateCost"
+                ></v-btn>
+            </v-card-actions>
+            </v-card>
+        </v-dialog>
     </div>
 </template>
   
@@ -26,7 +57,8 @@
     },
     data() {
         return {
-            costPerGuest: {}
+            costPerGuest: {},
+            dialogCost: false
         };
     },
     methods: {

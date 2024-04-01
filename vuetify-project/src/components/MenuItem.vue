@@ -10,7 +10,7 @@
           </span>
         </div>
       </div>
-      <v-btn color="rgb(186, 104, 200)"
+      <v-btn class="btn"
         @click="$emit('removeMenu', menuItem)"
         >
          Удалить

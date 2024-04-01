@@ -3,7 +3,7 @@
       <div>
         <div><strong>Имя:</strong> {{ guest.name }}</div>
       </div>
-      <v-btn color="rgb(186, 104, 200)"
+      <v-btn class="btn"
       @click="$emit('remove', guest)"
       >
          Удалить

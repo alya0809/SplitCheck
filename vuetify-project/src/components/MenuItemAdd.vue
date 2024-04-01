@@ -3,10 +3,11 @@
     <v-dialog v-model="dialog" max-width="600">
       <template v-slot:activator="{ props: activatorProps }">
         <v-col cols="auto">
-          <v-btn density="default"
+          <v-btn class="btn"
+            density="default"
             color="rgb(186, 104, 200)"
             prepend-icon="mdi-food"
-            text="Добавить позицию меню"
+            text="Добавить позицию"
             v-bind="activatorProps"
           ></v-btn>
         </v-col>
@@ -66,7 +67,7 @@
           ></v-btn>
 
           <v-btn
-            color="rgb(186, 104, 200)"
+            class="btn"
             text="Добавить"
             variant="flat"
             @click="addMenuItem"

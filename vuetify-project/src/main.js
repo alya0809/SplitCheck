@@ -7,7 +7,7 @@ import router from '@/router/router.js'
 import store from '@/store/index.js'
 // Composables
 import { createApp } from 'vue'
-
+import '@/styles/style.css'
 
 
 const app = createApp(App)

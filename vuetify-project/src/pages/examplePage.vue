@@ -2,7 +2,7 @@
     <v-sheet>
         <h2 class="text-center">Пример работы</h2>
       </v-sheet>
-    <v-carousel hide-delimiters style="max-width: 800px; margin: 20px auto;">
+    <v-carousel hide-delimiters class="carousel">
       <v-carousel-item
           v-for="(photo, index) in photos"
             :key="index"

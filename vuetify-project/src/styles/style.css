@@ -1,0 +1,73 @@
+.btn {
+  background-color: rgb(186, 104, 200);
+  color: aliceblue;
+  font-family: Roboto, Museo Slab, Calluna, Droid Sans, Helvetica, FF Meta Serif;
+}
+
+.content {
+  margin-top: 64px;
+}
+
+.block {
+  margin-top: 20px;
+  max-width: 90%;
+}
+
+.text {
+  font-size: 25px;
+  font-family: Roboto, Museo Slab, Calluna, Droid Sans, Helvetica, FF Meta Serif;
+}
+
+.main-div {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.subject-div {
+  display: flex;
+  align-items: center;
+  margin: 20px 0px;
+}
+.subject-div div {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.subject-div p {
+  flex: 1;
+  margin-left: 10px;
+  font-size: 22px;
+  font-family: Roboto, Museo Slab, Calluna, Droid Sans, Helvetica, FF Meta Serif;
+}
+
+.img-alone {
+  max-width: 65%;
+  margin-left: 15%;
+}
+
+.carousel {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.relative {
+  position: relative;
+}
+
+.router {
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo {
+  height: 40px;
+}
+
+.text-h2 {
+  font-size: 25px;
+  font-family: Roboto, Museo Slab, Calluna, Droid Sans, Helvetica, FF Meta Serif;
+}
+
+/*# sourceMappingURL=style.css.map */

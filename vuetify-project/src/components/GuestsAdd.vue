@@ -4,7 +4,7 @@
       <template v-slot:activator="{ props: activatorProps }">
         <v-col cols="auto">
           <v-btn 
-            color="rgb(186, 104, 200)"
+            class="btn"
             prepend-icon="mdi-account"
             text="Добавить гостя"
             density="default"
@@ -43,9 +43,8 @@
           ></v-btn>
 
           <v-btn
-            color="rgb(186, 104, 200)"
+            class="btn"
             text="Добавить"
-            variant="flat"
             @click="addGuests"
           ></v-btn>
         </v-card-actions>
