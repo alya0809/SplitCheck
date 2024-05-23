@@ -1,16 +1,9 @@
-
-/**
- * router/index.ts
- *
- * Automatic routes for `./src/pages/*.vue`
- */
-
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
-import MainPage from '@/pages/mainPage.vue'
+import MainPage from '@/pages/MainPage.vue'
 import SplitPage from '@/pages/SplitPage.vue'
-import aboutPage from '@/pages/aboutPage.vue'
-import examplePage from '@/pages/examplePage.vue'
+import AboutPage from '@/pages/AboutPage.vue'
+import ExamplePage from '@/pages/ExamplePage.vue'
 
 const routes = [
   {
@@ -25,13 +18,13 @@ const routes = [
   },
   {
     path: '/about',
-    name: aboutPage,
-    component: aboutPage
+    name: AboutPage,
+    component: AboutPage
   },
   {
     path: '/example',
-    name: examplePage,
-    component: examplePage
+    name: ExamplePage,
+    component: ExamplePage
   }
   
 ]

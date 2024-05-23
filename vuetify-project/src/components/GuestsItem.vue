@@ -1,24 +1,22 @@
 <template>
-    <div class="item">
-      <div>
-        <div><strong>Имя:</strong> {{ guest.name }}</div>
-      </div>
-      <v-btn class="btn"
-      @click="$emit('remove', guest)"
-      >
-         Удалить
-       </v-btn>
+  <div class="item">
+    <div>
+      <strong>
+        Имя:
+      </strong> 
+      {{ guest.name }}
     </div>
-  </template>
+  </div>
+</template>
   
   
-  <script> //a component of a single guest value
+<script> //a component of a single guest value
   export default {
     props: {
-        guest: {
+      guest: {
         type: Object,
         required: true,
       }
-    }
+    },
   }
-  </script>
+</script>

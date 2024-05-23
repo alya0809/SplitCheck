@@ -1,30 +1,32 @@
 <template>
-    <div v-if="menuItems.length > 0">
+  <div>
+    <div v-if="menuItems.length">
       <h3>Список позиций</h3>
       <transition-group name="user-list">
         <menu-item
           v-for="menuItem in menuItems"
-          :menuItem="menuItem"
           :key="menuItem.id"
-          @removeMenu="$emit('removeMenu', menuItem)"
+          :menu-item="menuItem"
+          @remove-menu="$emit('removeMenu', menuItem)"
         />
       </transition-group>
     </div>
-    <h2 v-else style="color: rgb(186, 104, 200)">
+    <h2 v-else>
       Список позиций пуст
     </h2>
-  </template>
+  </div>
+</template>
   
-  <script>
+<script>
   import MenuItem from "@/components/MenuItem";
   export default {
     components: {MenuItem},
     props: {
-        menuItems: {
+      menuItems: {
         type: Array,
         required: true
       }
     }
   }
-  </script>
+</script>
   

@@ -1,21 +1,23 @@
 <template>
-    <div v-if="guests.length > 0">
+  <div>
+    <div v-if="guests.length">
       <h3>Список гостей</h3>
       <transition-group name="user-list">
         <guests-item
           v-for="guest in guests"
-          :guest="guest"
           :key="guest.id"
+          :guest="guest"
           @remove="$emit('remove', guest)"
         />
       </transition-group>
     </div>
-    <h2 v-else style="color: rgb(186, 104, 200)">
+    <h2 v-else>
       Список гостей пуст
     </h2>
-  </template>
+  </div>
+</template>
 
-  <script>
+<script>
   import GuestsItem from "@/components/GuestsItem";
   export default {
     components: {GuestsItem},
@@ -24,8 +26,9 @@
         type: Array,
         required: true
       }
-    }
+    },
+    emits: ['remove']
   }
-  </script>
-  
+</script>
+
   

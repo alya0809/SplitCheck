@@ -70,6 +70,10 @@
   margin-left: 20%;
 }
 
+.guestsList h2 {
+  color: rgb(186, 104, 200);
+}
+
 .relative {
   position: relative;
 }
@@ -89,19 +93,19 @@
   margin-top: 10%;
 }
 
-#block1 {
+.block1 {
   margin-left: 10%;
   max-width: 70%;
 }
-#block1 p {
+.block1 p {
   text-align: justify;
 }
-#block1 #list {
+.block1 .list {
   margin-left: 30%;
   text-indent: 0px;
 }
 
-#img3 {
+.img3 {
   top: 40px;
 }
 
@@ -121,6 +125,10 @@
 .head p {
   font-size: 22px;
   text-align: justify;
+}
+
+.heading h2 {
+  margin-bottom: 30px;
 }
 
 .img-components2 {
@@ -198,6 +206,7 @@ h3 {
 
 .item {
   margin: 15px;
+  margin-left: 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -1,33 +1,25 @@
 export const mainModule = {
-    state: () => ({
-        guests: [],
-        menuItems: []
-    }),
-    getters: {
-
+  state: () => ({
+    guests: [],
+    menuItems: [],
+  }),
+  mutations: {
+    setGuests(state, guests) {
+      state.guests = guests;
     },
-    mutations: {
-        setGuests(state, guests) {
-            state.guests = guests;
-        },
-        setMenuItems(state, menuItems) {
-            state.menuItems = menuItems;
-        },
-        setAddGuests(state, guest) {
-            state.guests.push(guest);
-        },
-        setRemoveGuests(state, guest) {
-            state.guests = state.guests.filter(p => p.id != guest.id)
-        },
-        setAddMenuItem(state, menuItem) {
-            state.menuItems.push(menuItem);
-        },
-        setRemoveMenuItems(state, menuItem) {
-            state.menuItems = state.menuItems.filter(p => p.id != menuItem.id)
-        }
+    setMenuItems(state, menuItems) {
+      state.menuItems = menuItems;
     },
-    actions: {
-
+    addGuests(state, guest) {
+      state.guests.push(guest);
     },
-    namespaced: true
-}
+    
+    addMenuItem(state, menuItem) {
+      state.menuItems.push(menuItem);
+    },
+    removeMenuItems(state, menuItem) {
+      state.menuItems = state.menuItems.filter((p) => p.id != menuItem.id);
+    },
+  },
+  namespaced: true,
+};

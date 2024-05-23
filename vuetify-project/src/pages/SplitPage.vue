@@ -1,42 +1,48 @@
 <template>
   <v-container class="split">
-    <h1>Расчет стоимости</h1>
+    <h1>
+      Расчет стоимости
+    </h1>
     <v-container>
       <v-row>
         <v-col cols="4">
           <guests-add 
-          @create="addGuests"/>
+            @create="addGuests"/>
         </v-col>
         <v-col cols="4">
           <menu-item-add
-          :guests="guests"
-          @createMenu="addMenuItem"/>
+            :guests="guests"
+            @create-menu="addMenuItem"/>
         </v-col>
         <v-col cols="4">
           <calculate-price
             :guests="guests"
-            :menuItems="menuItems"
+            :menu-items="menuItems"
           />
         </v-col>
       </v-row>
     </v-container>
     <v-container class="border-content">
       <v-row class="justify-center align-center">
-        <v-col cols="5" class="mb-4">
+        <v-col 
+          cols="4" 
+          class="mb-4"
+        >
           <guests-list 
             :guests="guests" 
-            @remove="removeGuests"
           />
         </v-col>
-        <v-col cols="4" class="mb-4">
+        <v-col 
+          cols="4" 
+          class="mb-4"
+        >
           <menu-item-list 
-            :menuItems="menuItems" 
-            @removeMenu="removeMenuItems"
+            :menu-items="menuItems" 
+            @remove-menu="removeMenuItems"
           />
         </v-col>
       </v-row>
     </v-container>
-    
   </v-container>
   
 </template>
@@ -48,6 +54,7 @@ import GuestsList from '@/components/GuestsList.vue';
 import MenuItemList from '@/components/MenuItemList.vue';
 import CalculatePrice from '@/components/CalculatePrice.vue';
 import {mapState, mapMutations} from 'vuex';
+
   export default {
     components: {
         GuestsAdd,
@@ -60,23 +67,18 @@ import {mapState, mapMutations} from 'vuex';
       ...mapMutations({
           setGuest: 'main/setGuest',
           setMenuItem: 'main/setMenuItem',
-          setAddGuests: 'main/setAddGuests',
-          setRemoveGuests: 'main/setRemoveGuests',
-          setAddMenuItem: 'main/setAddMenuItem',
-          setRemoveMenuItems: 'main/setRemoveMenuItems'
+          addGuests: 'main/addGuests',
+          addMenuItem: 'main/addMenuItem',
+          removeMenuItems: 'main/removeMenuItems'
         }),
         addGuests(newGuest) {
-          this.$store.commit('main/setAddGuests', newGuest);
+          this.$store.commit('main/addGuests', newGuest);
         },
         addMenuItem(newItem) {
-          this.$store.commit('main/setAddMenuItem', newItem);
-        },
-        removeGuests(index) {
-          this.$store.commit('main/setRemoveGuests', index);
+          this.$store.commit('main/addMenuItem', newItem);
         },
         removeMenuItems(index) {
-          this.$store.commit('main/setRemoveMenuItems', index);
-            
+          this.$store.commit('main/removeMenuItems', index);  
         },
       },
     computed: {

@@ -77,6 +77,12 @@ $base-color: rgb(186, 104, 200);
     margin-left: 20%;
 }
 
+.guestsList {
+    h2 {
+        color: $base-color;
+    }
+}
+
 .relative {
     position: relative;
     div {
@@ -95,19 +101,19 @@ $base-color: rgb(186, 104, 200);
         margin-top: 10%;
     }
 }
-#block1 { 
+.block1 { 
     margin-left: 10%;
     max-width: 70%;
     p {
         text-align: justify;
     }
-    #list {
+    .list {
         margin-left: 30%;
         text-indent: 0px;
     }
 }
 
-#img3 {
+.img3 {
     top: 40px;
 }
 
@@ -125,6 +131,11 @@ $base-color: rgb(186, 104, 200);
     p {
         @include text($size: 22px);
         text-align: justify;
+    }
+}
+.heading {
+    h2 {
+        margin-bottom: 30px;
     }
 }
 .img-components2 {
@@ -174,6 +185,7 @@ $base-color: rgb(186, 104, 200);
         }
     }
 }
+
 .split {
     h1 {
         @include text($size: 30px);
@@ -206,6 +218,7 @@ h3 {
 .item {
     @extend %border;
     margin: 15px;
+    margin-left: 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
