@@ -1,14 +1,50 @@
 <template>
-  <v-app-bar :elevation="0" app color="#752382">
+  <v-app-bar
+    :elevation="0"
+    app
+    color="#752382"
+  >
     <template #prepend>
       <v-toolbar-title>
-        <img src="@/images/main.png" alt="Логотип" class="logo">
+        <img
+          src="@/images/main.png"
+          alt="Логотип"
+          class="logo"
+        >
       </v-toolbar-title>
     </template>
-    <v-app-bar-title><router-link to="/" class="router">СплитЧек</router-link></v-app-bar-title>
-  
-    <v-btn><router-link to="/split" class="router">Использовать</router-link></v-btn>
-    <v-btn><router-link to="/about" class="router">О продукте</router-link></v-btn>
-    <v-btn><router-link to="/example" class="router">Пример работы</router-link></v-btn>
+    <v-app-bar-title>
+      <router-link
+        to="/"
+        class="router"
+      >
+        СплитЧек
+      </router-link>
+    </v-app-bar-title>
+
+    <v-btn>
+      <router-link
+        to="/split"
+        class="router"
+      >
+        Использовать
+      </router-link>
+    </v-btn>
+    <v-btn>
+      <router-link
+        to="/about"
+        class="router"
+      >
+        О продукте
+      </router-link>
+    </v-btn>
+    <v-btn>
+      <router-link
+        to="/example"
+        class="router"
+      >
+        Пример работы
+      </router-link>
+    </v-btn>
   </v-app-bar>
 </template>

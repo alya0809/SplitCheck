@@ -1,15 +1,18 @@
 <template>
   <div class="item">
-    <div>
-      <strong>
-        Имя:
-      </strong> 
+    <strong>
+      Имя:
       {{ guest.name }}
-    </div>
+    </strong>
+    <v-btn
+      class="btn"
+      @click="$emit('remove', guest)"
+    >
+      Удалить
+    </v-btn>
   </div>
 </template>
-  
-  
+
 <script> //a component of a single guest value
   export default {
     props: {
@@ -18,5 +21,6 @@
         required: true,
       }
     },
+    emits: ['remove']
   }
 </script>

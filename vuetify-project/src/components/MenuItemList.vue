@@ -1,7 +1,9 @@
 <template>
   <div>
     <div v-if="menuItems.length">
-      <h3>Список позиций</h3>
+      <h3>
+        Список позиций
+      </h3>
       <transition-group name="user-list">
         <menu-item
           v-for="menuItem in menuItems"
@@ -16,7 +18,7 @@
     </h2>
   </div>
 </template>
-  
+
 <script>
   import MenuItem from "@/components/MenuItem";
   export default {
@@ -26,7 +28,8 @@
         type: Array,
         required: true
       }
-    }
+    },
+    emits: ['removeMenu']
   }
 </script>
-  
+

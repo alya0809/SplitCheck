@@ -13,7 +13,9 @@ export const mainModule = {
     addGuests(state, guest) {
       state.guests.push(guest);
     },
-    
+    removeGuests(state, guest) {
+      state.guests = state.guests.filter(p => p.id != guest.id)
+    },
     addMenuItem(state, menuItem) {
       state.menuItems.push(menuItem);
     },

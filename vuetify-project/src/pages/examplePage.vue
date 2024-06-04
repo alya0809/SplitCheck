@@ -3,17 +3,16 @@
     <p class="example">
       Пример работы
     </p>
-    <v-carousel 
-      hide-delimiters 
+    <v-carousel
+      hide-delimiters
       class="carousel"
     >
       <v-carousel-item
         v-for="photo in photos"
-          :key="photo.id"
-          :src="photo.src"
-          contain
-      >
-      </v-carousel-item>
+        :key="photo.id"
+        :src="photo.src"
+        contain
+      />
     </v-carousel>
   </div>
 </template>

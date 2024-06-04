@@ -1,71 +1,68 @@
 <template>
   <div class="pa-4 text-center">
-    <v-dialog 
-      v-model="isDialogGuestOpen" 
-      max-width="600">
+    <v-dialog
+      v-model="isDialogGuestOpen"
+      max-width="600"
+    >
       <template #activator="{ props: activatorProps }">
         <v-col>
-          <v-btn 
+          <v-btn
             class="btn"
             prepend-icon="mdi-account"
             text="Добавить гостя"
             v-bind="activatorProps"
-          >
-          </v-btn>
+          />
         </v-col>
       </template>
-      <v-card 
-        class="purple-border" 
-        outlined 
-        prepend-icon="mdi-account" 
+      <v-card
+        class="purple-border"
+        outlined
+        prepend-icon="mdi-account"
         title="Добавить гостя"
       >
         <v-card-text>
           <v-row dense>
             <v-col color="rgb(232, 206, 237)">
-              <v-text-field 
-                v-model="guest.name"
-                label="Имя*" 
+              <v-text-field
+                v-model.trim="guest.name"
+                label="Имя*"
                 required
                 :class="{ 'error': !guest.name }"
-              >
-              </v-text-field>
+              />
             </v-col>
           </v-row>
 
           <small class="text-caption text-medium-emphasis">
-          *Обязательное поле
+            *Обязательное поле
           </small>
         </v-card-text>
 
-        <v-divider/>
+        <v-divider />
 
         <v-card-actions>
-          <v-spacer/>
+          <v-spacer />
 
-          <v-btn 
+          <v-btn
+            color="rgb(186, 104, 200)"
             text="Закрыть"
-            color="rgb(186, 104, 200)" 
-            variant="tonal" 
+            variant="tonal"
             @click="onClickCloseDialogGuest"
-          >
-          </v-btn>
-
+          />
           <v-btn
             class="btn"
             text="Добавить"
             @click="onClickAddGuests"
-          >
-          </v-btn>
+          />
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </div>  
+  </div>
 </template>
-  
+
 <script>
   import {shakeForm} from "@/service/shakeForm.js"
   export default {
+    emits: ['create'],
     data() {
       return {
         guest: {
@@ -93,7 +90,6 @@
           name: ''
         }
       }
-    }
+    },
   }
 </script>
-  

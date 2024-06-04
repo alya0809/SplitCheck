@@ -1,7 +1,9 @@
 <template>
   <div>
     <div v-if="guests.length">
-      <h3>Список гостей</h3>
+      <h3>
+        Список гостей
+      </h3>
       <transition-group name="user-list">
         <guests-item
           v-for="guest in guests"
@@ -31,4 +33,3 @@
   }
 </script>
 
-  

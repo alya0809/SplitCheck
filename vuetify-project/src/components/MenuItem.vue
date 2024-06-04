@@ -4,31 +4,32 @@
       <div>
         <strong>
           Название:
-        </strong> 
+        </strong>
         {{ menuItem.name }}
       </div>
       <div>
         <strong>
           Цена:
-        </strong> 
-        {{ menuItem.price}}
+        </strong>
+        {{ menuItem.price }}
       </div>
-      
+
       <div>
         <strong>
-          Кто заказал: 
-        </strong> 
+          Кто заказал:
+        </strong>
         {{ guestsWhoEat }}
       </div>
     </div>
-    <v-btn class="btn"
+    <v-btn
+      class="btn"
       @click="$emit('remove-menu', menuItem)"
-      >
-        Удалить
+    >
+      Удалить
     </v-btn>
   </div>
 </template>
-  
+
 <script>
   export default {
     props: {
@@ -45,4 +46,3 @@
     }
   }
 </script>
-  
